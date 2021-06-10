@@ -1,38 +1,62 @@
 package com.andoridrest.Springboot.app.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long deparmentId;
+    private Long departmentId;
+
+    @NotBlank(message = "Please Add Department Name")
+   /* @Length(max = 5,min = 1)
+    @Size(max = 10,min = 0)
+    @Email
+    @Positive
+    @Negative
+    @PositiveOrZero
+    @NegativeOrZero
+    @Future
+    @FutureOrPresent
+    @Past
+    @PastOrPresent*/
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;
 
 
-    public Department() {
-    }
-
-    public Department(Long deparmentId, String departmentName, String departmentAddress, String departmentCode) {
-        this.deparmentId = deparmentId;
+   /* public Department(Long departmentId, @NotBlank(message = "Please Add Department Name") String departmentName, String departmentAddress, String departmentCode) {
+        this.departmentId = departmentId;
         this.departmentName = departmentName;
         this.departmentAddress = departmentAddress;
         this.departmentCode = departmentCode;
     }
 
-    public Long getDeparmentId() {
-        return deparmentId;
+    public Department() {
     }
 
-    public void setDeparmentId(Long deparmentId) {
-        this.deparmentId = deparmentId;
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getDepartmentName() {
@@ -57,15 +81,5 @@ public class Department {
 
     public void setDepartmentCode(String departmentCode) {
         this.departmentCode = departmentCode;
-    }
-
-    @Override
-    public String toString() {
-        return "Department{" +
-                "deparmentId=" + deparmentId +
-                ", departmentName='" + departmentName + '\'' +
-                ", departmentAddress='" + departmentAddress + '\'' +
-                ", departmentCode='" + departmentCode + '\'' +
-                '}';
-    }
+    }*/
 }
