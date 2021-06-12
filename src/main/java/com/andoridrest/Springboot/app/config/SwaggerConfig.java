@@ -23,6 +23,10 @@ public class SwaggerConfig {
               .paths(Predicates.not(PathSelectors.regex("/error")))
               .build()
               .apiInfo(metadata());
+
+
+
+
    }
     private ApiInfo metadata() {
         return new ApiInfoBuilder()//
