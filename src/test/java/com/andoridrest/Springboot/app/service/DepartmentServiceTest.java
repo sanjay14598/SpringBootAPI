@@ -1,7 +1,5 @@
 package com.andoridrest.Springboot.app.service;
 
-import com.andoridrest.Springboot.app.entity.Department;
-import com.andoridrest.Springboot.app.repository.DepartmentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/*
 @SpringBootTest
 class DepartmentServiceTest {
 
@@ -42,4 +41,4 @@ class DepartmentServiceTest {
 
         assertEquals(departmentName, found.getDepartmentName());
     }
-}
+}*/

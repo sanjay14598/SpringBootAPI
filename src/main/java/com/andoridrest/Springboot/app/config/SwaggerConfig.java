@@ -25,9 +25,9 @@ public class SwaggerConfig {
               .apiInfo(metadata());
 
 
-
-
    }
+
+
     private ApiInfo metadata() {
         return new ApiInfoBuilder()//
                 .title("RestApi")//

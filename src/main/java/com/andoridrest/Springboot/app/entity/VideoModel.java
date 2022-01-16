@@ -9,35 +9,35 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class User {
+public class VideoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userId;
-    private String userName;
-    private String userMobile;
-    private String userPassword;
-    private String userAge;
-    private String appVersion;
-    private String deviceToken;
-    private String deviceType;
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "user")
-    private UserRole role;
-
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy = "user")
-    private Payment payment;
-
+    private long id;
+    private String title;
+    private String description;
+    private String videoUrl;
+    private String videoThumb;
+    private String verticalThumb;
+    private String horizontalThumb;
+    private String trailerUrl;
+    private String casts;
+    private String director;
+    private String producer;
+    private String language;
+    private String geners;
+    private String views;
+    private String likes;
+    private long channelId;
+    private String videoType;
+    private String rated;
+    private String upcomingDate;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreatedDate
@@ -47,11 +47,6 @@ public class User {
     @Column(name = "updated_at", nullable = false)
     @LastModifiedDate
     private Date updatedAt;
-
-    /*@OneToMany(mappedBy = "user", cascade = {
-            CascadeType.ALL
-    })
-    private List<Devices> devices;*/
 
 
 }
