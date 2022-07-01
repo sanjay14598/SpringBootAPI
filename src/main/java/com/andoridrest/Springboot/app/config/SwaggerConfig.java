@@ -34,7 +34,7 @@ public class SwaggerConfig {
                 .description("Rest Api Documentation")//
                 .version("V-1.0.0")//
                 .license("MIT License").licenseUrl("http:sanjay.co.in")//
-                .contact(new Contact("Techniti Software Solution Pvt. Ltd.", "techniti.co.in", "dev@techniti.co.in"))//
+                .contact(new Contact("Visit my linkedin profile get more information about me.", "https://www.linkedin.com/in/sanjay-sharma-5072851a3/", "sanjay14598@gmail.com"))//
                 .build();
     }
 }

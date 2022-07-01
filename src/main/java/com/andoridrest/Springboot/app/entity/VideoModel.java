@@ -1,9 +1,8 @@
 package com.andoridrest.Springboot.app.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -12,9 +11,7 @@ import java.util.Date;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Table(name = "videos")
 public class VideoModel {
 
     @Id
@@ -22,11 +19,11 @@ public class VideoModel {
     private long id;
     private String title;
     private String description;
-    private String videoUrl;
-    private String videoThumb;
-    private String verticalThumb;
-    private String horizontalThumb;
-    private String trailerUrl;
+    private String videourl;
+    private String videothumb;
+    private String verticalthumb;
+    private String horizontalthumb;
+    private String trailerurl;
     private String casts;
     private String director;
     private String producer;
@@ -34,8 +31,8 @@ public class VideoModel {
     private String geners;
     private String views;
     private String likes;
-    private long channelId;
-    private String videoType;
+    private long channelid;
+    private String videotype;
     private String rated;
     private String upcomingDate;
     @Temporal(TemporalType.TIMESTAMP)

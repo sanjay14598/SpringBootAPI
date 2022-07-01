@@ -9,16 +9,17 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "payments")
-public class Payment {
+@Table(name = "notifications")
+public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
-    private String amount;
-    private String duration;
+    private int userid;
     private String title;
+    private String message;
+    private String image;
+    private boolean status;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreatedDate
@@ -28,3 +29,4 @@ public class Payment {
     @LastModifiedDate
     private Date updatedAt;
 }
+

@@ -6,13 +6,19 @@ import com.andoridrest.Springboot.app.repository.UserRepository;
 import com.andoridrest.Springboot.app.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("user")
 public class UserController {
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private UserServiceImpl userService;
@@ -20,16 +26,26 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @GetMapping("/index")
+    public String index(){
+        return "index_page";
+    }
+
     @PostMapping("/user")
     public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+        Optional<User> user1 = Optional.ofNullable(userRepository.findByUserMobile(user.getMobile()));
+        if (user1.isPresent()) {
+               return null;
+        }
+        User use = new User(user.getMobile(),bCryptPasswordEncoder.encode(user.getPassword()));
+
+        return userService.createUser(use);
     }
 
     @GetMapping("/users")
     public List<User> fetchAllUser() {
         return userService.fetchAllUser();
     }
-
 
     @GetMapping("/user/{phone}/{password}")
     public User getValidateUser(@PathVariable String phone, @PathVariable String password) {
@@ -50,7 +66,7 @@ public class UserController {
             @Valid @RequestBody User userDetail) throws ResourceNotFoundException {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found :: " + userId));
-        user.setUserName(userDetail.getUserName());
+        user.setName(userDetail.getName());
         final User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
     }
@@ -61,7 +77,7 @@ public class UserController {
             @Valid @RequestBody User userDetail) throws ResourceNotFoundException {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found :: " + userId));
-        user.setUserPassword(userDetail.getUserPassword());
+        user.setPassword(userDetail.getPassword());
         final User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
     }

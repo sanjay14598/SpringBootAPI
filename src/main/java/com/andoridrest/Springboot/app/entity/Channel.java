@@ -9,26 +9,15 @@ import java.util.Date;
 
 @Entity
 @Data
-@Table(name = "all_user")
-public class User {
+@Table(name = "channel")
+public class Channel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
     private String name;
-    private String mobile;
-    private String password;
-    private String age;
-    private String appversion;
-    private String devicetoken;
-    private String devicetype;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "payments_id")
-    private Payment payment;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "roles_id")
-    private UserRole userRole;
+    private String image;
+    private String description;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreatedDate
@@ -38,10 +27,4 @@ public class User {
     @LastModifiedDate
     private Date updatedAt;
 
-    public User(String mobile, String password) {
-        this.mobile = mobile;
-        this.password = password;
-    }
-
-    //TODO: r&d jackson part
 }

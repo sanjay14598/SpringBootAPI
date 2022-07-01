@@ -9,21 +9,19 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Table(name = "devices")
 public class Devices {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long deviceId;
-    private String deviceModel;
-    private String deviceName;
-    private String deviceToken;
-    private String deviceVersion;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String model;
+    private String name;
+    private String token;
+    private String version;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "userid")
     private User user;
 
 
